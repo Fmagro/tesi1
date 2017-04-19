@@ -1,0 +1,47 @@
+<p>
+  <strong>Name:</strong>
+  <%= @artist.name %>
+
+</p>
+ 
+<p>
+  <strong>Bio:</strong>
+  <%= @artist.bio %>
+
+</p>
+
+<p>
+ 
+  <% if @artist.isgroup %>
+    <h2>
+      Group of artists
+    </h2>
+
+  <% else %>   
+    <h2>
+      Single artist
+    </h2>
+  <% end %>
+</p>
+
+<h2>Songs played by the artist </h2>
+  <table>
+  <tr>
+    <th>Title</th>
+    <th>Genre</th>
+    <th colspan="1"></th>
+  </tr>
+  <% @artist.songs.each do |song| %>
+    <tr>
+      <td><%= song.title %></td>
+      <td><%= song.genre %></td>
+      <td><%= link_to 'Show Song', song_path(song) %></td>
+      
+    </tr>  
+  <% end %>
+</table>
+
+
+<%= link_to 'Edit', edit_artist_path(@artist) %> |
+<%= link_to 'Add another artist', new_artist_path %> |
+<%= link_to 'Back', artists_path %>

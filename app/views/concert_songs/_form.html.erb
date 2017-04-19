@@ -1,0 +1,30 @@
+<%= form_for @concert_song do |f| %>
+ 
+  <% if @concert_song.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@concert_song.errors.count, "error") %> prohibited
+        this concert_song from being saved:
+      </h2>
+      <ul>
+        <% @concert_song.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <p>
+    <%= f.select :concert_id, Concert.all.collect{ |p| [p.name, p.id] } %><br>
+ 
+  </p>
+ 
+  <p>
+    <%= f.select :song_id, Song.all.collect{ |p| [p.title, p.id] } %><br>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+ 
+<% end %>

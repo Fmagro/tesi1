@@ -1,0 +1,11 @@
+<p>
+  <strong>Concert:</strong>
+  <%= @setlist.concert.name %>
+</p>
+ 
+<p>
+  <strong>Song:</strong>
+  <%= @setlist.song.title %>
+</p>
+<%= link_to 'Edit', edit_setlist_path(@setlist) %> |
+<%= link_to 'Back', setlists_path %>

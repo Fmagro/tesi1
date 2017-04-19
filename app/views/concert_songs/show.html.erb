@@ -1,0 +1,11 @@
+<p>
+  <strong>Concert:</strong>
+  <%= @concert_song.concert.name %>
+</p>
+ 
+<p>
+  <strong>Song:</strong>
+  <%= @concert_song.song.title %>
+</p>
+<%= link_to 'Edit', edit_concert_song_path(@concert_song) %> |
+<%= link_to 'Back', concert_songs_path %>

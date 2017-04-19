@@ -1,0 +1,3 @@
+class ConcertSong < ApplicationRecord
+
+end
