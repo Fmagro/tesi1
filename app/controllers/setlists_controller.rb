@@ -30,7 +30,8 @@ class SetlistsController < ApplicationController
     if @setlist.save
       redirect_to concert_path(@concert)
     else
-      render 'new'
+      @concert = Concert.find(params[:concert_id])
+      render 'concerts/show'
     end
   end
  
