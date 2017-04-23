@@ -1,47 +1,70 @@
-<p>
-  <strong>Name:</strong>
-  <%= @artist.name %>
-
-</p>
+<%= form_for @artist, url: managesong_artist_path(@artist) do |f| %>
  
-<p>
-  <strong>Bio:</strong>
-  <%= @artist.bio %>
+  <%= render 'errors'%>
 
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @artist.name %>
 
-<p>
+  </p>
  
-  <% if @artist.isgroup %>
-    <h2>
-      Group of artists
-    </h2>
+  <p>
+    <strong>Bio:</strong>
+    <%= @artist.bio %>
 
-  <% else %>   
-    <h2>
-      Single artist
-    </h2>
-  <% end %>
-</p>
+  </p>
 
-<h2>Songs played by the artist </h2>
-  <table>
-  <tr>
-    <th>Title</th>
-    <th>Genre</th>
-    <th colspan="1"></th>
-  </tr>
-  <% @artist.songs.each do |song| %>
+  <p>
+ 
+    <% if @artist.isgroup %>
+      <h2>
+        Group of artists
+      </h2>
+
+    <% else %>   
+      <h2>
+        Single artist
+      </h2>
+    <% end %>
+  </p>
+
+  <h2>Songs played by the artist </h2>
+    <table>
     <tr>
-      <td><%= song.title %></td>
-      <td><%= song.genre %></td>
-      <td><%= link_to 'Show Song', song_path(song) %></td>
+      <th>Title</th>
+      <th>Genre</th>
+
+    </tr>
+    <% @artist.songs.each do |song| %>
+      <tr>
+        <td><%= link_to song.title, song_path(song) %></td>
+        <td><%= song.genre %></td>
+
       
-    </tr>  
-  <% end %>
-</table>
+      </tr>  
+    <% end %>
+  </table>
+<h4>Songs played by the artist:</h4>
+ <p>
+   <%= select_tag "song_to_add", options_from_collection_for_select(Song.all, "id" , "title") %>
+<%= check_box_tag("song_add") %>
+<%= label_tag("song_add", "Add this association") %>
+<br>
+  </p>
+<h4>Remove a song played by the artist:</h4>
+<p>
+  <%= select_tag "song_to_delete", options_from_collection_for_select(@artist.songs, "id" , "title") %>
+<%= check_box_tag("song_del") %>
+<%= label_tag("song_del", "Remove this association") %>
+
+<br>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
 
 
+<% end %>
 <%= link_to 'Edit', edit_artist_path(@artist) %> |
 <%= link_to 'Add another artist', new_artist_path %> |
 <%= link_to 'Back', artists_path %>

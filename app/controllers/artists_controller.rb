@@ -5,30 +5,9 @@ def index
  
   def show
     @artist = Artist.find(params[:id])
+
   end
- 
-  def new
-    @artist = Artist.new
-  end
- 
-  def edit
-    @artist = Artist.find(params[:id])
-  end
- 
-  def create
-    @artist = Artist.new(artist_params)
-    if params[:song_add]
-      @song = Song.where(:id => params[:song_to_add])
-      @artist.songs<< @song
-    end
-    if @artist.save
-      redirect_to @artist
-    else
-      render 'new'
-    end
-  end
- 
-  def update
+   def managesong
     @artist = Artist.find(params[:id])
     if params[:song_add]
       @song = Song.where(:id  => params[:song_to_add])
@@ -38,6 +17,31 @@ def index
       @songd = Song.where(:id  => params[:song_to_delete])
       @artist.songs.delete(@songd)
     end
+    redirect_to @artist
+  end
+ 
+  def new
+    @artist = Artist.new
+    @artist.isgroup = false
+  end
+ 
+  def edit
+    @artist = Artist.find(params[:id])
+  end
+ 
+  def create
+    @artist = Artist.new(artist_params)
+
+    if @artist.save
+      redirect_to @artist
+    else
+      render 'new'
+    end
+  end
+ 
+  def update
+    @artist = Artist.find(params[:id])
+
     if @artist.update(artist_params)
       redirect_to @artist
     else

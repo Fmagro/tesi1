@@ -1,18 +1,6 @@
 <%= form_for @artist do |f| %>
  
-  <% if @artist.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(@artist.errors.count, "error") %> prohibited
-        this artist from being saved:
-      </h2>
-      <ul>
-        <% @artist.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'errors'%>
  
   <p>
     <%= f.label :Name %><br>
@@ -32,42 +20,9 @@
     <%= label_tag( "A group of artists") %>
   </p>
 
-
-<h2>Songs played by the artist </h2>
-  <table>
-  <tr>
-    <th>Title</th>
-    <th>Genre</th>
-    <th colspan="1"></th>
-  </tr>
-  <% @artist.songs.each do |song| %>
-    <tr>
-      <td><%= song.title %></td>
-      <td><%= song.genre %></td>
-
-      <td><%= link_to 'Show Song', song_path(song) %></td>
-
-    </tr>  
-  <% end %>
-</table>
-
-<h4>Songs played by the artist:</h4>
- <p>
-   <%= select_tag "song_to_add", options_from_collection_for_select(Song.all, "id" , "title") %>
-<%= check_box_tag("song_add") %>
-<%= label_tag("song_add", "Add this association") %>
-<br>
-  </p>
-<h4>Remove a song played by the artist:</h4>
-<p>
-  <%= select_tag "song_to_delete", options_from_collection_for_select(@artist.songs, "id" , "title") %>
-<%= check_box_tag("song_del") %>
-<%= label_tag("song_del", "Remove this association") %>
-
-<br>
-  </p>
   <p>
     <%= f.submit %>
   </p>
+
 
 <% end %>
