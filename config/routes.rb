@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :songs
   resources :artists do
     member do
+      patch 'managesong'
       delete 'destroylink'
     end
   end
