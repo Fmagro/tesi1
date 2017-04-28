@@ -69,6 +69,6 @@ def index
   end
   private
     def artist_params
-      params.require(:artist).permit(:name,:bio,:isgroup )
+      params.require(:artist).permit(:name,:bio,:isgroup, bands_attributes: [:id, :individual_id, :group_id, :joining, :leaving] )
     end
 end

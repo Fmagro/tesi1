@@ -1,0 +1,17 @@
+  <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :bio %><br>
+    <%= f.text_area :bio, size: "30x10" %>
+  </p>
+
+  <p>
+
+    <%= f.radio_button(:isgroup, false)  %>
+    <%= label_tag( "Single artist") %>
+    <%= f.radio_button(:isgroup, true) %>
+    <%= label_tag( "A group of artists") %>
+  </p>
