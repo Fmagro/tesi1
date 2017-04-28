@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  joining: 2017-04-23
+  leaving: 2017-04-23
+  group: one
+  individual: one
+
+two:
+  joining: 2017-04-23
+  leaving: 2017-04-23
+  group: two
+  individual: two

@@ -13,3 +13,135 @@
  *= require_tree .
  *= require_self
  */
+<style> 
+/*html,body          {
+    height:100%;
+    margin:0;
+}
+*/
+body
+              {
+/*    background-image: url('/assets/concert_home2.jpg');
+    background-size: cover:
+
+    height: 600px;*/
+    margin:0;
+}
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+    padding:10x;
+ 
+    /*overflow: auto;*/
+    /*margin-bottom:-30px;*/
+
+}
+
+header	      {
+    padding: 0.3em;
+    color: white;
+    background-color: gray;
+    clear: left;
+    text-align: center;
+/*    height:45px;*/
+
+}
+
+footer        {
+    padding: 1em;
+    color: white;
+    background-color: gray;
+    clear: left;
+    text-align: center;
+    position: fixed;
+    bottom:0;
+    height: 25px;
+    width: 100%;
+
+ /*   clear: both;*/
+}
+/*div.push       {
+    height: 30px;
+}
+*/
+
+}
+nav {
+    /*float: left;
+    max-width: 120px;
+    margin: 0;
+    padding: 1em;
+ */
+
+}
+
+nav ul {
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+
+
+}
+
+nav li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+nav li last-child {
+    border-right:none;
+}  
+ 
+nav li a {
+    display: block;
+    padding: 14px 16px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+nav li a:hover:not(.active) {
+        background-color: #111;
+}
+/*
+.active {
+        background-color: #4CAE50;
+}*/
+
+
+
+article {
+    /*margin-left: 130px;
+    border-left: 1px solid gray;*/
+    padding: 1em;
+    overflow: auto;
+    min-height: -webkit-calc(100vh - 30px);     
+    min-height: -moz-calc(100vh - 30px);     
+    min-height: calc(100vh - 30px);     
+    background-color:rgba(255,255,255,0.7);
+/*  background-image: url('/assets/concert_home.jpg');
+    background-size: cover;*/
+    /*opacity: 0.5;*/
+/*    height: 600px;*/
+
+}
+
+
+div.welcomearticle {
+    /*margin-left: 130px;
+    border-left: 1px solid blue;*/
+    padding: 1em;
+    overflow: auto;
+    min-height: -webkit-calc(100vh - 30px);     
+    min-height: -moz-calc(100vh - 30px);     
+    min-height: calc(100vh - 30px);     
+/*  background-color:rgba(255,255,255,0.7);
+    background-image: url('/assets/concert_home.jpg');
+    background-size: cover;*/
+    /*opacity: 0.5;*/
+/*    height: 600px;*/
+
+}
+
+</style>

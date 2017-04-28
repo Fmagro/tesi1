@@ -9,6 +9,33 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+    <header>
+      <h1>My Concert</h1>
+    </header>
+
+    <nav>
+      <ul>
+        <li><%= link_to 'Home', welcome_index_path %></li>
+ 
+        <li><%= link_to 'Concert', concerts_path %></li>
+        <li><%= link_to 'Song', songs_path %></li>
+        <li><%= link_to 'Artist', artists_path %></li>
+      </ul>
+    </nav>
+      
+  
+    <article>
+ 
+ 
+      <%= yield %>
+
+ 
+ 
+   </article> 
+
+
+    <footer>Copyright &copy; F. Magro</footer>
+    </div>
   </body>
 </html>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170408170053) do
+ActiveRecord::Schema.define(version: 20170423110005) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "name"
@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 20170408170053) do
     t.boolean  "isgroup"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    
+    t.integer  "manager_id"
+    t.index ["manager_id"], name: "index_artists_on_manager_id"
   end
 
   create_table "artists_songs", id: false, force: :cascade do |t|
@@ -26,6 +27,17 @@ ActiveRecord::Schema.define(version: 20170408170053) do
     t.integer "song_id"
     t.index ["artist_id"], name: "index_artists_songs_on_artist_id"
     t.index ["song_id"], name: "index_artists_songs_on_song_id"
+  end
+
+  create_table "bands", force: :cascade do |t|
+    t.date     "joining"
+    t.date     "leaving"
+    t.integer  "group_id"
+    t.integer  "individual_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["group_id"], name: "index_bands_on_group_id"
+    t.index ["individual_id"], name: "index_bands_on_individual_id"
   end
 
   create_table "concert_songs", force: :cascade do |t|
