@@ -9,6 +9,47 @@
   <%= @concert.date %>
 </p>
 
+  <h2>Artists performing in this concert: </h2>
+    <table>
+    <tr>
+      <th>Name</th>
+
+    </tr>
+    <% @concert.artists.each do |artist| %>
+      <tr>
+        <td><%= link_to artist.name, artist_path(artist) %></td>
+
+      </tr>  
+    <% end %>
+  </table>
+
+<%= form_for @concert, url: manageartist_concert_path(@concert) do |f| %>
+
+
+ <h4>Artists performing in this concert: </h4>
+ <p>
+   <%= select_tag "artist_to_add", options_from_collection_for_select(Artist.all, "id" , "name") %>
+<%= check_box_tag("artist_add") %>
+<%= label_tag("artist_add", "Add this association") %>
+<br>
+  </p>
+<h4>Remove an artist from this concert:</h4>
+<p>
+  <%= select_tag "artist_to_delete", options_from_collection_for_select(@concert.artists, "id" , "name") %>
+<%= check_box_tag("artist_del") %>
+<%= label_tag("artist_del", "Remove this association") %>
+
+<br>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+
+
+<% end %>
+
+
+
 <h2>Setlist</h2>
   <table>
   <tr>
