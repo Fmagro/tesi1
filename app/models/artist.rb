@@ -2,6 +2,8 @@ class Artist < ApplicationRecord
   has_and_belongs_to_many :songs 
   accepts_nested_attributes_for :songs
 
+  has_and_belongs_to_many :concerts 
+
   has_many :bands, foreign_key: "group_id",  dependent: :destroy 
 
 

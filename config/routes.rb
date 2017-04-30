@@ -3,8 +3,13 @@ Rails.application.routes.draw do
   
   resources :concerts do
     resources :setlists
+    member do
+      patch 'manageartist'
+    end
   end
+
   resources :songs
+
   resources :artists do
     resources :bands
     member do
@@ -13,6 +18,7 @@ Rails.application.routes.draw do
     end
 
   end
+
   resources :concert_songs
   root 'welcome#index'
 end

@@ -6,7 +6,18 @@ class ConcertsController < ApplicationController
   def show
     @concert = Concert.find(params[:id])
   end
- 
+  def manageartist
+    @concert = Concert.find(params[:id])
+    if params[:artist_add]
+      @artist = Artist.where(:id  => params[:artist_to_add])
+      @concert.artists<< @artist 
+    end
+    if (params[:artist_del])
+      @artistd = Artist.where(:id  => params[:artist_to_delete])
+      @concert.artists.delete(@artistd)
+    end
+    redirect_to @concert
+  end 
   def new
     @concert = Concert.new
   end

@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-def index
+  def index
     @artists = Artist.all
   end
  
@@ -7,7 +7,7 @@ def index
     @artist = Artist.find(params[:id])
 
   end
-   def managesong
+  def managesong
     @artist = Artist.find(params[:id])
     if params[:song_add]
       @song = Song.where(:id  => params[:song_to_add])
