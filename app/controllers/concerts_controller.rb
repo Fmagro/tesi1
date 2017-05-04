@@ -18,6 +18,21 @@ class ConcertsController < ApplicationController
     end
     redirect_to @concert
   end 
+  def managevenue
+    @concert = Concert.find(params[:id])
+
+    if (params[:venue_del])
+     #@venued = Venue.where(:id  => params[:venue_to_delete])
+
+      @venue = Venue.where(:id  => params[:venue_to_add]).first
+      @concert.venue = @venue
+    end
+    if @concert.update_attribute(:venue_id,params[:venue_to_add])
+      redirect_to @concert
+    else
+      render 'show'
+    end
+  end 
   def new
     @concert = Concert.new
   end
@@ -28,7 +43,9 @@ class ConcertsController < ApplicationController
  
   def create
     @concert = Concert.new(concert_params)
- 
+      @venue = Venue.where(:id  => params[:venue_to_add]).first
+      #@venue= @concert.venue
+      @concert.venue = @venue  
     if @concert.save
       redirect_to @concert
     else
@@ -55,7 +72,8 @@ class ConcertsController < ApplicationController
  
   private
     def concert_params
-      params.require(:concert).permit(:name, :date,  setlists_attributes: [:id, :concert_id, :song_id, :position])
+      params.require(:concert).permit(:name, :date, :venue_id,   
+setlists_attributes: [:id, :concert_id, :song_id, :position])
     end
 end
 

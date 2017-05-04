@@ -41,13 +41,30 @@
 
 <br>
   </p>
-  <p>
-    <%= f.submit %>
-  </p>
+  <p>    <%= f.submit %>  </p>
 
 
 <% end %>
 
+<h2>Venue: </h2>
+<td><%= link_to @concert.venue.name,  venue_path(@concert.venue) %></td>
+  
+<%= form_for @concert, url: managevenue_concert_path(@concert) do |f| %>
+
+  <p><%= check_box_tag("venue_del") %>
+  <%= label_tag("venue_del", "Replace with another venue?") %>
+  <br>
+  </p>
+  
+<p>
+   <%= select_tag "venue_to_add", options_from_collection_for_select(Venue.all, "id" , "name") %>
+<%= label_tag("Add this association") %>
+<br>
+  </p>
+
+<p><%= f.submit %></p>
+<% end %>
+ 
 
 
 <h2>Setlist</h2>
