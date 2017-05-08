@@ -17,7 +17,7 @@
   <%= @venue.country %>
 </p>
 
-<% if false%>
+
 <h2>Concerts held here</h2>
   <table>
   <tr>
@@ -26,12 +26,12 @@
   </tr>
   <% @venue.concerts.each do |concert| %>
     <tr>
-      <td><%= link_to concert.name, concert_path(@concert) %></td>
+      <td><%= link_to concert.name, concert_path(concert) %></td>
       <td><%= concert.date %></td>
     </tr>  
   <% end %>
 </table>
-<%end%>
+
 
 <%= link_to 'Edit', edit_venue_path(@venue) %> |
 <%= link_to 'Add another venue', new_venue_path %> |

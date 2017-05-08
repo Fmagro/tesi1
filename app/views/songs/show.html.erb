@@ -7,6 +7,37 @@
   <strong>Date:</strong>
   <%= @song.genre %>
 </p>
+
+
+<h2>Artists performing this song: </h2>
+  <table>
+  <tr>
+    <th>Name</th>
+
+  </tr>
+  <% @song.artists.each do |artist| %>
+    <tr>
+      <td><%= link_to artist.name, artist_path(artist) %></td>
+
+    </tr>  
+  <% end %>
+</table>
+
+<h2>Concerts where this song was performed: </h2>
+  <table>
+  <tr>
+
+    <th>Name</th>
+  </tr>
+  <% @song.setlists.each do |setlist| %>
+    <tr>   
+      <td><%= link_to setlist.concert.name, concert_path(setlist.concert) %></td>
+
+    </tr>  
+  <% end %>
+</table>
+<br>
+ 
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Add another song', new_song_path %> |
 <%= link_to 'Concert index', concerts_path %> |
