@@ -23,7 +23,7 @@ class SetlistsController < ApplicationController
     #setlist.song =@song
     @concert = Concert.find(params[:concert_id])
     @setlist = @concert.setlists.create(setlist_params)
-    @setlist.position = @concert.setlists.count
+    @setlist.position = @concert.setlists.count+1
 
  
 

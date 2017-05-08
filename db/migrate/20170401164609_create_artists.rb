@@ -4,9 +4,7 @@ class CreateArtists < ActiveRecord::Migration[5.0]
       t.string :name
       t.string :bio
       t.boolean :isgroup
-      def
-        self.isgroup =false if self.isgroup.nil?
-      end 
+
       t.timestamps
     end
   end

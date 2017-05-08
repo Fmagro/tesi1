@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :setlists
     member do
       patch 'manageartist'
+      patch 'managevenue'
     end
   end
 
@@ -19,6 +20,8 @@ Rails.application.routes.draw do
 
   end
 
+  resources :venues
+  
   resources :concert_songs
   root 'welcome#index'
 end

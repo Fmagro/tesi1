@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430110421) do
+ActiveRecord::Schema.define(version: 20170501100723) do
 
   create_table "artists", force: :cascade do |t|
     t.string   "name"
@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 20170430110421) do
     t.boolean  "isgroup"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "manager_id"
-    t.index ["manager_id"], name: "index_artists_on_manager_id"
   end
 
   create_table "artists_concerts", id: false, force: :cascade do |t|
@@ -56,6 +54,8 @@ ActiveRecord::Schema.define(version: 20170430110421) do
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "venue_id"
+    t.index ["venue_id"], name: "index_concerts_on_venue_id"
   end
 
   create_table "setlists", force: :cascade do |t|
@@ -71,6 +71,15 @@ ActiveRecord::Schema.define(version: 20170430110421) do
   create_table "songs", force: :cascade do |t|
     t.string   "title"
     t.string   "genre"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "venues", force: :cascade do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "city"
+    t.string   "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
