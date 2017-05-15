@@ -14,5 +14,22 @@ class Concert < ApplicationRecord
                     length: { minimum: 1, maximum: 25 }
   validates :date, presence: true
 
+  scope :by_venue, -> (venue_s) { where("venuename = ?", venue_s) if venue_s.present? }
 
+  scope :by_city, -> (city_s) { where("city = ?", city_s) if city_s.present? }
+
+  scope :by_country, -> (country_s) { where("country = ?", country_s) if country_s.present? }
+
+  scope :by_artist, -> (artist_s) { where("artistname = ?", artist_s) if artist_s.present? }
+
+  scope :after, -> (a_date) { where("date >= ?", Date.parse(a_date)) if a_date.present? }
+
+  scope :before, -> (b_date) { where("date <= ?", Date.parse(b_date)) if b_date.present? }
+
+  def conc(c_id)
+    Concert.find(c_id)
+  end
+  #scope :venuej, {joins(:venue).select("concerts.*, venues.*, venue.name as venuename")}
+  
+    #scope :artistj, joins(:artists).select("artist.*, artist.name as artistname")
 end

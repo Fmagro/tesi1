@@ -11,8 +11,11 @@
       <td><%=  s.genre %></td>
       <td>       
         <table>
-        <% s.artists.each do |a| %>
+        <% s.artists.first(3).each do |a| %>
           <tr><td><%=  a.name %></td></tr>
+        <% end %>
+        <% if s.artists.count > 3 %>
+         <tr><td><%=  '...' %></td></tr>            
         <% end %>
         </table>
       </td> 

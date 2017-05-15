@@ -7,6 +7,10 @@ Rails.application.routes.draw do
       patch 'manageartist'
       patch 'managevenue'
     end
+    collection do
+      get 'concertsearch'
+      get 'concertfilter'
+    end
   end
 
   resources :songs do

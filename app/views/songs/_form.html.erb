@@ -21,7 +21,7 @@
  
   <p>
     <%= f.label :genre %><br>
-    <%= f.text_field :genre %>
+  <%= select_tag "genre_s", options_for_select(  Song.all_genres.to_a)  %>
   </p>
  
   <p>

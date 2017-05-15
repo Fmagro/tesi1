@@ -7,7 +7,7 @@
  
   <p>
   <%= label_tag(:genre_s, "Genre:") %>
-  <%= text_field_tag(:genre_s) %>
+  <%= select_tag "genre_s", options_for_select(  Song.all_genres.to_a ),{ :prompt => "select genre" } %>
   </p>
 
   <p>
