@@ -49,7 +49,7 @@ class SongsController < ApplicationController
   def songfilter
     @songs = Song.by_title(params[:title_s]).by_genre(params[:genre_s]) 
     #@songs = @songs.by_genre(params[:genre_s])
-    @songs = @songs.by_artist(params[:artist_s])     
+    @songs = @songs.joins(:artists).by_artist(params[:artist_s]).group(:id)     
   end
  
   private
