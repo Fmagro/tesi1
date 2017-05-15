@@ -9,7 +9,12 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :songs
+  resources :songs do
+    collection do
+      get 'songsearch'
+      get 'songfilter'
+    end
+  end
 
   resources :artists do
     resources :bands

@@ -41,6 +41,16 @@ class SongsController < ApplicationController
  
     redirect_to songs_path
   end
+
+  def songsearch
+    @songs = Song.all 
+  end
+
+  def songfilter
+    @songs = Song.by_title(params[:title_s]).by_genre(params[:genre_s]) 
+    #@songs = @songs.by_genre(params[:genre_s])
+    @songs = @songs.by_artist(params[:artist_s])     
+  end
  
   private
     def song_params

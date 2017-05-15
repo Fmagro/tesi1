@@ -1,0 +1,21 @@
+<h2>Search results: </h2>
+  <table>
+  <tr>
+    <th>Title</th>
+    <th>Genre</th>
+    <th>Artist</th>
+  </tr>
+  <% @songs.each do |s| %>
+    <tr>
+      <td><%= link_to s.title, song_path(s) %></td>
+      <td><%=  s.genre %></td>
+      <td>       
+        <table>
+        <% s.artists.each do |a| %>
+          <tr><td><%=  a.name %></td></tr>
+        <% end %>
+        </table>
+      </td> 
+    </tr>  
+  <% end %>
+</table>
