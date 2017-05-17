@@ -16,5 +16,6 @@ class Artist < ApplicationRecord
   validates :name, presence: true, uniqueness: true,
                     length: { maximum: 25 }
 
+  scope :by_name, -> (name_s) { where("name = ?", name_s) if name_s.present? }
 
 end

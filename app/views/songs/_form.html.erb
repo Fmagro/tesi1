@@ -15,16 +15,20 @@
   <% end %>
  
   <p>
-    <%= f.label :name %><br>
+    <%= f.label :title %><br>
     <%= f.text_field :title %>
   </p>
  
   <p>
     <%= f.label :genre %><br>
-  <%= select_tag "genre_s", options_for_select(  Song.all_genres.to_a)  %>
+   <%= f.select :genre, Song.all_genres.to_a %><br>
   </p>
  
   <p>
+    <%= f.label "Youtube id:" %><br>
+    <%= f.text_field :ytid %>
+  </p>
+   <p>
     <%= f.submit %>
   </p>
 

@@ -7,7 +7,11 @@
   <strong>Genre:</strong>
   <%= @song.genre %>
 </p>
-
+ 
+<p>
+  <strong>youtube:</strong>
+  <%= @song.ytid %>
+</p>
 
 <h2>Artists performing this song: </h2>
   <table>
@@ -37,11 +41,11 @@
   <% end %>
 </table>
 <br>
- 
-<iframe id="player" type="text/html" width="640" height="390"
-  src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com"
-  frameborder="0"></iframe>
-<br>
+<% if @song.ytid.present?%> 
+  <iframe id="player" type="text/html" width="480" height="270"src="http://www.youtube.com/embed/<%= @song.ytid %>?enablejsapi=1&origin=http://example.com"
+  frameborder="0"></iframe> 
+  <br>
+<% end %>
 
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Add another song', new_song_path %> |

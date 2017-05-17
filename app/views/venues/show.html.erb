@@ -18,6 +18,15 @@
 </p>
 
 
+<iframe
+  width="400"
+  height="300"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/place?key=<%= Manythrough::Application.config.api_key %>
+    &q=<%= @venue.address %>,<%= @venue.city %>,<%= @venue.country %>" allowfullscreen>
+</iframe>
+
+
 <h2>Concerts held here</h2>
   <table>
   <tr>
