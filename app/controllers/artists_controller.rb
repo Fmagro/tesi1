@@ -67,6 +67,15 @@ class ArtistsController < ApplicationController
    redirect_to artists_path
  
   end
+
+  def artistsearch
+    @artists = Artist.by_name(params[:name_s])
+  end
+
+  def artistfilter
+    @artists = Artist.all
+  end
+
   private
     def artist_params
       params.require(:artist).permit(:name,:bio,:isgroup, bands_attributes: [:id, :individual_id, :group_id, :joining, :leaving] )

@@ -26,7 +26,10 @@ Rails.application.routes.draw do
       patch 'managesong'
       delete 'destroylink'
     end
-
+    collection do
+      get 'artistsearch'
+      get 'artistfilter'
+    end
   end
 
   resources :venues
