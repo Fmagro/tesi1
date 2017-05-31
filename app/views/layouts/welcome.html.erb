@@ -4,14 +4,14 @@
     <title>Manythrough</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application_w', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div class="container">
     <header>
-      <h1>My Concert</h1>
+      <h1>Relive your concert</h1>
     </header>
 
     <nav>
@@ -26,14 +26,14 @@
     </nav>
       
   
-    <div class="welcomearticle">
+    <div class="content">
  
  
       <%= yield %>
 
  
  
-   </article> 
+   </div> 
 
 
     <footer>Copyright &copy; F. Magro</footer>
