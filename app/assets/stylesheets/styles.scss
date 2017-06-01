@@ -14,7 +14,6 @@ div.container {
 }
 
 header {
-    
     padding: 1em;
     height: 10vh;
     color: #B47746;
@@ -61,7 +60,7 @@ nav li a {
     display: block;
     color: #273a61;
     text-align: center;
-/*    text-shadow: 1px 1px 2px black;*/
+/*    text-shadow: 1px 1px  black;*/
     padding: 0.6em 1em;
     text-decoration: none;
 }
@@ -87,4 +86,22 @@ nav.active {
     overflow: auto;
 }
 
+.infosection {
+/*    display: inline-block;
+    border: 1px solid #273a61;
+    width: 40vw;
+    min-height: 20vh;
+    background-color: #e4ebf6;*/
+    float: left;
+    margin: 0.8em;
+    min-width: 42vw;
+    padding: 0.8em;
+    min-height: 10em;
+    border: 1px solid #273a61;
+    box-shadow:10px 10px 5px grey;
 
+}
+
+.afterinfosection {
+    clear: left;
+}
