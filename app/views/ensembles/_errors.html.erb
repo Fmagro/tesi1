@@ -1,0 +1,13 @@
+  <% if @ensemble.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@ensemble.errors.count, "error") %> prohibited
+        this association from being saved:
+      </h2>
+      <ul>
+        <% @ensemble.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>

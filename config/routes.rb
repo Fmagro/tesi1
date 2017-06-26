@@ -32,6 +32,13 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :performers 
+  resources :individuals, :controller => "performers", :type => "Individual"
+  resources :groups, :controller => "performers", :type => "Group" do
+    resources :ensembles
+  end
+ 
+
   resources :venues
   
   resources :concert_songs

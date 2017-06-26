@@ -1,0 +1,30 @@
+<h1>Edit Artist</h1>
+
+<%= form_for @performer do |f| %>
+ 
+  <%= render 'errors'%>
+ 
+  <%= render 'performerinfo', f: f %>
+
+  <% if @performer.type == 'Group' %>
+    <h2>Edit a member of the group</h2>
+    <% @performer.ensembles.each do |ens| %> 
+      <%= f.fields_for :ensembles, ens do |ff| %>
+      <h4><%=ens.individual.pname%> </h4>
+      <h5> Joining date </h5>
+      <%= ff.date_field :joining %><br> 
+      <h5> Leaving date </h5>
+      <%= ff.date_field :leaving %><br> 
+
+
+     <% end %>
+   <% end %>
+  <% end %>
+
+  <p>
+    <%= f.submit %>
+  </p>
+
+<% end %> 
+
+<%= link_to 'Back', performers_path %>

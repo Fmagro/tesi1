@@ -1,0 +1,164 @@
+
+ 
+  <%= render 'errors'%>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @performer.pname %>
+
+  </p>
+ 
+  <p>
+    <strong>Bio:</strong>
+    <%= @performer.bio %>
+
+  </p>
+
+  <p>
+ 
+    <% if @performer.type == "Group" %>
+      <h2>Group of performers     </h2>
+
+      <h6>A group should have at least one member</h6>
+      <h2>Members of the group</h2>
+      <table>
+        <tr>
+        <th>Name</th>
+        <th>Joining date</th>
+        <th>Leaving date</th>
+        <th colspan="1"></th>
+      </tr>
+
+
+      <% @performer.ensembles.each do |ensemble| %>
+        <tr>
+        <td><%= ensemble.individual.pname %></td>
+        <td><%= ensemble.joining %></td>
+        <td><%= ensemble.leaving %></td>
+        <td><%= link_to 'Edit', edit_performer_path(ensemble.individual) %></td>
+      </tr>  
+      <% end %>
+
+      </table>
+ 
+
+    <% else %>   
+      <h2> Single performer</h2>
+      <h3> Belongs to the following groups </h3>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Joining date</th>
+          <th>Leaving date</th>
+          <th colspan="1"></th
+        </tr>
+
+
+      <% @performer.ensembles.each do |ensemble| %>
+        <tr>
+          <td><%= ensemble.group.pname %></td>
+          <td><%= ensemble.joining %></td>
+          <td><%= ensemble.leaving %></td>
+          <td><%= link_to 'Edit', edit_performer_path(ensemble.group) %></td>
+        </tr>  
+      <% end %>
+
+      </table>
+
+    <% end %>
+  </p>
+
+
+<% if false%>
+---------------------------------------------
+  <h2>Songs played by the performer </h2>
+    <table>
+    <tr>
+      <th>Title</th>
+      <th>Genre</th>
+
+    </tr>
+    <% @performer.songs.each do |song| %>
+      <tr>
+        <td><%= link_to song.title, song_path(song) %></td>
+        <td><%= song.genre %></td>
+
+      
+      </tr>  
+    <% end %>
+  </table>
+
+<%= form_for @performer, url: managesong_performer_path(@performer) do |f| %>
+
+
+ <h4>Songs played by the performer:</h4>
+ <p>
+   <%= select_tag "song_to_add", options_from_collection_for_select(Song.all, "id" , "title") %>
+<%= check_box_tag("song_add") %>
+<%= label_tag("song_add", "Add this association") %>
+<br>
+  </p>
+<h4>Remove a song played by the performer:</h4>
+<p>
+  <%= select_tag "song_to_delete", options_from_collection_for_select(@performer.songs, "id" , "title") %>
+<%= check_box_tag("song_del") %>
+<%= label_tag("song_del", "Remove this association") %>
+
+<br>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+
+
+<% end %>
+------------------------------------------
+<% end %>
+
+
+    <% if @performer.type == 'Group' %>  
+
+      <h2> Add a member to the group:   </h2>
+
+      <%= form_for([@performer, @performer.ensembles.build])  do |ff| %>
+        <p>
+          <%= ff.select :individual_id, Performer.where(:type => "Individual").collect{ |p| [p.pname, p.id] } %><br>
+        </p>
+        <p>
+          <h5> Joining date </h5>
+          <%= ff.date_field :joining %>
+        </p>
+        <p>
+          <h5> Leaving date </h5>
+          <%= ff.date_field :leaving %>
+        </p>
+
+ 
+
+        <p>
+        <%= ff.submit %>
+        </p>
+       <% end %>	
+     <% end %>	
+
+
+
+<h2>Concerts held by this performer: </h2>
+  <table>
+  <tr>
+    <th>Name</th>
+    <th>Date</th>
+  </tr>
+  <% @performer.concerts.each do |concert| %>
+    <tr>
+      <td><%= link_to concert.name, concert_path(concert) %></td>
+      <td><%= concert.date %></td>
+    </tr>  
+  <% end %>
+</table>
+
+
+
+<%= link_to 'Edit', edit_performer_path(@performer) %> |
+<%= link_to 'Add a new single performer', new_individual_path %> |<%= link_to 'Add a new group of performers', new_group_path %> |
+<%= link_to 'Back', performers_path %>

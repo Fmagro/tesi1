@@ -1,10 +1,10 @@
-class CreateBands < ActiveRecord::Migration[5.0]
+class CreateEnsembles < ActiveRecord::Migration[5.0]
   def change
-    create_table :bands do |t|
+    create_table :ensembles do |t|
       t.date :joining
       t.date :leaving
-
       t.timestamps
     end
   end
+  
 end

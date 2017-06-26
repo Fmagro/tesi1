@@ -11,7 +11,7 @@
   <% @concerts.each do |j| %>
     <tr>
       <td><%= link_to j.concertname, concert_path(j.concertid) %></td>
-      <td><%=  j.venue.name %></td>
+      <td><%=  j.venuename %></td>
       <td><%=  j.venue.city %></td>
       <td><%=  j.venue.country %></td>
       <td><%=  j.date %></td>

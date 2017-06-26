@@ -9,12 +9,12 @@ class ConcertsController < ApplicationController
   def manageartist
     @concert = Concert.find(params[:id])
     if params[:artist_add]
-      @artist = Artist.where(:id  => params[:artist_to_add])
-      @concert.artists<< @artist 
+      @performer = Performer.where(:id  => params[:artist_to_add])
+      @concert.performers<< @performer 
     end
     if (params[:artist_del])
-      @artistd = Artist.where(:id  => params[:artist_to_delete])
-      @concert.artists.delete(@artistd)
+      @performerd = Performer.where(:id  => params[:artist_to_delete])
+      @concert.performers.delete(@performerd)
     end
     redirect_to @concert
   end 
@@ -75,9 +75,12 @@ class ConcertsController < ApplicationController
   end
 
   def concertsearch
-    @concerts =  Concert.select("*,concerts.id as concertid, concerts.name as concertname").before(params[:b_date]).after(params[:a_date])
-    @concerts=@concerts.joins(:venue).select("venues.name as venuename").by_venue(params[:venue_s]).by_city(params[:city_s]).by_country(params[:country_s])
-    @concerts=@concerts.joins(:artists).select("artists.name as artistname").by_artist(params[:artist_s]).group(:id) 
+@concerts =  Concert.select('*,concerts.id as concertid, concerts.name as concertname,venues.name as venuename').before(params[:b_date]).after(params[:a_date]).joins(:venue).by_venue(params[:venue_s]).by_city(params[:city_s]).by_country(params[:country_s]).group(:id)
+    #@concerts =  Concert.select('*,concerts.id as concertid, concerts.name as concertname').before(params[:b_date]).after(params[:a_date])
+    #@concerts=@concerts.joins(:venue).select('venues.name as venuename').by_venue(params[:venue_s]).by_city(params[:city_s]).by_country(params[:country_s])
+    #@concerts=@concerts.joins(:performers).by_performer(params[:performer_s]) 
+#    @concerts=@concerts.joins(:artists).select("artists.name as artistname").by_artist(params[:artist_s]).group(:id) 
+
   end
  
   private
