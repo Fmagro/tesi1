@@ -1,0 +1,17 @@
+  <%= form_for @setlist, url: addperformer_concert_setlist_path(@concert,@setlist) do |f| %>
+
+
+    <h4>Artists performing this song: </h4>
+    <p>
+      <%= select_tag "artist_to_add", options_from_collection_for_select(@concert.performers, "id" , "pname") %>
+      <%= check_box_tag("artist_add") %>
+      <%= label_tag("artist_add", "Add this association") %><br>
+    </p>
+    <h4>Remove an artist from this performance:</h4>
+    <p>
+      <%= select_tag "artist_to_delete", options_from_collection_for_select(@concert.performers, "id" , "pname") %>
+      <%= check_box_tag("artist_del") %>
+      <%= label_tag("artist_del", "Remove this association") %><br>
+    </p>
+    <p>    <%= f.submit %>  </p>
+  <% end %>

@@ -2,7 +2,12 @@ Rails.application.routes.draw do
   get 'welcome/index'
   
   resources :concerts do
-    resources :setlists
+    resources :setlists do
+      member do
+       get 'manageperformer'
+       patch 'addperformer'
+      end
+    end      
     member do
       patch 'manageartist'
       patch 'managevenue'

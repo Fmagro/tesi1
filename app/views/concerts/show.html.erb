@@ -69,13 +69,20 @@
     <tr>
       <th>Position</th>
       <th>Title</th>
-      <th colspan="1"></th>
+      <th>Artists</th>
+      <th colspan="2"></th>
     </tr>
       <% @concert.setlists.order("position").each do |setlist| %>
       <tr>
         <td><%= setlist.position %></td>
         <td><%= setlist.song.title %></td>
+        <td><table>
+        <% setlist.performers.each do |performer| %>
+          <tr><td><%= performer.pname %></td></tr>
+        <% end %>
+        </table></td>
         <td><%= link_to 'Edit', edit_concert_path(@concert) %></td>
+        <td><%= link_to 'Add a performer', manageperformer_concert_setlist_path(@concert,setlist) %></td>
       </tr>  
       <% end %>
     </table>

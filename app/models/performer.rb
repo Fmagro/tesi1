@@ -2,6 +2,7 @@ class Performer < ApplicationRecord
 
   has_and_belongs_to_many :concerts 
 
+  has_and_belongs_to_many :setlists 
 
   validates :pname, presence: true, uniqueness: true,
                     length: { maximum: 25 }

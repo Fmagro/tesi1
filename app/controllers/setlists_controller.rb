@@ -48,6 +48,28 @@ class SetlistsController < ApplicationController
     end
   end
  
+  def manageperformer
+    @concert = Concert.find(params[:concert_id])
+    @setlist = @concert.setlists.find(params[:id])
+       
+  end
+  
+  def addperformer
+    @concert = Concert.find(params[:concert_id])
+    @setlist = @concert.setlists.find(params[:id])
+    
+    if params[:artist_add]
+      @performer = Performer.where(:id  => params[:artist_to_add])
+      @setlist.performers<< @performer 
+    end
+    if (params[:artist_del])
+      @performerd = Performer.where(:id  => params[:artist_to_delete])
+      @setlist.performers.delete(@performerd)
+    end
+    redirect_to @concert 
+    
+   
+  end
   def destroy
     @setlist = Setlist.find(params[:id])
     @setlist.destroy
